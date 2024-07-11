@@ -12,12 +12,13 @@ import bodyParser from 'body-parser';
 const app = express();
 const corsOptions = {
   credentials: true,
-  origin: `http://localhost:5173,${process.env.DEPLOY_FE_URL}`,
+  origin: `${process.env.DEPLOY_FE_URL}`,
   optionSuccessStatus: 200,
 };
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors(corsOptions));
+/* app.use(cors(corsOptions)); */
 app.use(
   fileUpload({
     useTempFiles: true,
