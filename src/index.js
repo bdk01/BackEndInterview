@@ -9,11 +9,10 @@ import fileUpload from "express-fileupload";
 import connectToMongo from "./config/connectDB";
 import bodyParser from 'body-parser';
 
-
 const app = express();
 const corsOptions = {
   credentials: true,
-  origin: "http://localhost:5173",
+  origin: `http://localhost:5173,${process.env.DEPLOY_FE_URL}`,
   optionSuccessStatus: 200,
 };
 app.use(bodyParser.urlencoded({ extended: true }));
